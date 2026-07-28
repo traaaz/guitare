@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Échauffements — Guitare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    .finger-note {
+      fill: var(--note-soft);
+      stroke: var(--note);
+      stroke-width: 1;
+    }
+    .finger-note.accent {
+      fill: var(--root);
+      stroke: var(--root);
+    }
+    .finger-text {
+      font-family: 'Manrope', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      fill: var(--note-text);
+      text-anchor: middle;
+    }
+    .finger-text.accent { fill: #fbf6ec; }
+    .move-arc {
+      fill: none;
+      stroke: var(--root);
+      stroke-width: 1.4;
+      marker-end: url(#arrowHead);
+    }
+    .move-label {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 12px;
+      fill: var(--root);
+      text-anchor: middle;
+    }
+    .note-legend {
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-bottom: 18px;
+    }
+    .note-legend strong { color: var(--text); font-weight: 600; }
+    .panel-desc strong { color: var(--text); font-weight: 600; }
+    .panel-desc em { font-style: italic; color: var(--root); }
+
+    .panel-benefit {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--line-soft);
+      font-size: 12px;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+    .panel-benefit-label {
+      display: inline-block;
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--note-text);
+      background: var(--note-soft);
+      padding: 2px 6px;
+      border-radius: 2px;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav-root" data-page="echauffements"></div>
+  <script src="js/nav.js"></script>
+
+  <div class="container">
+
+    <header class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">Guitare</p>
+        <h1>Échauffements</h1>
+        <p class="subtitle">La routine avant de jouer — dans l'ordre donné par Claire.</p>
+      </div>
+    </header>
+
+    <p class="note-legend">Numéros de doigts : <strong>1</strong> index · <strong>2</strong> majeur · <strong>3</strong> annulaire · <strong>4</strong> auriculaire. Le métronome est accessible en haut à droite, dans le menu.</p>
+
+    <section class="selector">
+      <div class="selector-label">Aller à</div>
+      <div class="chips">
+        <a class="chip" href="#hammer-on">Hammer-on</a>
+        <a class="chip" href="#pull-off">Pull-off</a>
+        <a class="chip" href="#torture">La torture</a>
+        <a class="chip" href="#crabe">Le crabe</a>
+        <a class="chip" href="#araignee">L'araignée</a>
+      </div>
+    </section>
+
+    <!-- Hammer-on -->
+    <div class="panel" id="hammer-on">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Legato</span>
+          <span class="panel-roman">Hammer-on</span>
+        </div>
+        <div class="panel-meta">corde 1 (e aigu) · schéma 2-2-4</div>
+      </div>
+      <div class="fretboard-wrap">
+        <svg class="fretboard" viewBox="0 0 380 140" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#ab6047"/>
+            </marker>
+          </defs>
+          <line class="string-line" x1="40" y1="50" x2="320" y2="50"/>
+          <line class="fret-line" x1="40" y1="35" x2="40" y2="65"/>
+          <line class="fret-line" x1="110" y1="35" x2="110" y2="65"/>
+          <line class="fret-line" x1="180" y1="35" x2="180" y2="65"/>
+          <line class="fret-line" x1="250" y1="35" x2="250" y2="65"/>
+          <line class="fret-line" x1="320" y1="35" x2="320" y2="65"/>
+          <text class="string-label" x="22" y="50" text-anchor="middle" dy=".35em">e</text>
+          <text class="fret-label" x="75" y="88" text-anchor="middle">1</text>
+          <text class="fret-label" x="145" y="88" text-anchor="middle">2</text>
+          <text class="fret-label" x="215" y="88" text-anchor="middle">3</text>
+          <text class="fret-label" x="285" y="88" text-anchor="middle">4</text>
+
+          <path class="move-arc" d="M 75 50 Q 110 18 145 50"/>
+          <text class="move-label" x="110" y="14">×2</text>
+          <path class="move-arc" d="M 145 50 Q 180 18 215 50"/>
+          <text class="move-label" x="180" y="14">×2</text>
+          <path class="move-arc" d="M 215 50 Q 250 18 285 50"/>
+          <text class="move-label" x="250" y="14">×4</text>
+
+          <circle class="finger-note" cx="75" cy="50" r="12"/>
+          <text class="finger-text" x="75" y="50" dy=".35em">1</text>
+          <circle class="finger-note" cx="145" cy="50" r="12"/>
+          <text class="finger-text" x="145" y="50" dy=".35em">2</text>
+          <circle class="finger-note" cx="215" cy="50" r="12"/>
+          <text class="finger-text" x="215" y="50" dy=".35em">3</text>
+          <circle class="finger-note" cx="285" cy="50" r="12"/>
+          <text class="finger-text" x="285" y="50" dy=".35em">4</text>
+        </svg>
+      </div>
+      <p class="panel-desc">Index posé en case 1 (corde 1, le <em>e</em> aigu). Joue la corde puis <strong>hammer 2 fois</strong> en case 2 avec le majeur, index toujours posé. Sans relâcher index et majeur, <strong>hammer 2 fois</strong> en case 3 avec l'annulaire. Sans relâcher les trois premiers doigts, <strong>hammer 4 fois</strong> en case 4 avec l'auriculaire. Décale ensuite l'index d'une case (case 2) et recommence le même schéma 2-2-4, jusqu'en bas du manche. Un coup de doigt par clic de métronome.</p>
+      <p class="panel-benefit"><span class="panel-benefit-label">Bienfaits</span>Développe la vélocité et la force de frappe de la main gauche : chaque doigt doit produire un son net sans l'aide du médiator. Travaille aussi le timing et prépare aux legatos rapides dans les solos.</p>
+    </div>
+
+    <!-- Pull-off -->
+    <div class="panel" id="pull-off">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Legato</span>
+          <span class="panel-roman">Pull-off</span>
+        </div>
+        <div class="panel-meta">corde 1 (e aigu) · schéma 2-2-4 à l'inverse</div>
+      </div>
+      <div class="fretboard-wrap">
+        <svg class="fretboard" viewBox="0 0 380 140" xmlns="http://www.w3.org/2000/svg">
+          <line class="string-line" x1="40" y1="50" x2="320" y2="50"/>
+          <line class="fret-line" x1="40" y1="35" x2="40" y2="65"/>
+          <line class="fret-line" x1="110" y1="35" x2="110" y2="65"/>
+          <line class="fret-line" x1="180" y1="35" x2="180" y2="65"/>
+          <line class="fret-line" x1="250" y1="35" x2="250" y2="65"/>
+          <line class="fret-line" x1="320" y1="35" x2="320" y2="65"/>
+          <text class="string-label" x="22" y="50" text-anchor="middle" dy=".35em">e</text>
+          <text class="fret-label" x="75" y="88" text-anchor="middle">1</text>
+          <text class="fret-label" x="145" y="88" text-anchor="middle">2</text>
+          <text class="fret-label" x="215" y="88" text-anchor="middle">3</text>
+          <text class="fret-label" x="285" y="88" text-anchor="middle">4</text>
+
+          <path class="move-arc" d="M 285 50 Q 250 18 215 50"/>
+          <text class="move-label" x="250" y="14">×2</text>
+          <path class="move-arc" d="M 215 50 Q 180 18 145 50"/>
+          <text class="move-label" x="180" y="14">×2</text>
+          <path class="move-arc" d="M 145 50 Q 110 18 75 50"/>
+          <text class="move-label" x="110" y="14">×4</text>
+
+          <circle class="finger-note" cx="75" cy="50" r="12"/>
+          <text class="finger-text" x="75" y="50" dy=".35em">1</text>
+          <circle class="finger-note" cx="145" cy="50" r="12"/>
+          <text class="finger-text" x="145" y="50" dy=".35em">2</text>
+          <circle class="finger-note" cx="215" cy="50" r="12"/>
+          <text class="finger-text" x="215" y="50" dy=".35em">3</text>
+          <circle class="finger-note" cx="285" cy="50" r="12"/>
+          <text class="finger-text" x="285" y="50" dy=".35em">4</text>
+        </svg>
+      </div>
+      <p class="panel-desc">Même exercice à l'inverse, pour remonter le manche une fois arrivé en bas avec le hammer-on. Les 4 doigts posés sur 4 cases consécutives : <strong>pull-off 2 fois</strong> de l'auriculaire (case 4) vers l'annulaire (case 3), <strong>2 fois</strong> de l'annulaire vers le majeur (case 2), <strong>4 fois</strong> du majeur vers l'index (case 1) — les doigts restants toujours posés. Décale ensuite la main d'une case vers le haut du manche et recommence, jusqu'à revenir en case 1. Toujours au métronome.</p>
+      <p class="panel-benefit"><span class="panel-benefit-label">Bienfaits</span>Travaille le geste inverse du hammer-on — un léger tiré vers le bas plutôt qu'une frappe — pour égaliser le volume entre notes montantes et descendantes. Indispensable pour des phrases legato fluides dans les deux sens.</p>
+    </div>
+
+    <!-- La torture -->
+    <div class="panel" id="torture">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Escalier</span>
+          <span class="panel-roman">La torture</span>
+        </div>
+        <div class="panel-meta">cordes 6 à 3 · un doigt à la fois</div>
+      </div>
+      <div class="fretboard-wrap">
+        <svg class="fretboard" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+          <line class="string-line" x1="40" y1="38" x2="360" y2="38"/>
+          <line class="string-line" x1="40" y1="56" x2="360" y2="56"/>
+          <line class="string-line" x1="40" y1="74" x2="360" y2="74"/>
+          <line class="string-line" x1="40" y1="92" x2="360" y2="92"/>
+          <line class="fret-line" x1="40" y1="24" x2="40" y2="106"/>
+          <line class="fret-line" x1="104" y1="24" x2="104" y2="106"/>
+          <line class="fret-line" x1="168" y1="24" x2="168" y2="106"/>
+          <line class="fret-line" x1="232" y1="24" x2="232" y2="106"/>
+          <line class="fret-line" x1="296" y1="24" x2="296" y2="106"/>
+          <line class="fret-line" x1="360" y1="24" x2="360" y2="106"/>
+          <text class="fret-label" x="72" y="124" text-anchor="middle">10</text>
+          <text class="fret-label" x="136" y="124" text-anchor="middle">11</text>
+          <text class="fret-label" x="200" y="124" text-anchor="middle">12</text>
+          <text class="fret-label" x="264" y="124" text-anchor="middle">13</text>
+          <text class="fret-label" x="328" y="124" text-anchor="middle">14</text>
+          <text class="string-label" x="22" y="38" text-anchor="middle" dy=".35em">G</text>
+          <text class="string-label" x="22" y="56" text-anchor="middle" dy=".35em">D</text>
+          <text class="string-label" x="22" y="74" text-anchor="middle" dy=".35em">A</text>
+          <text class="string-label" x="22" y="92" text-anchor="middle" dy=".35em">E</text>
+
+          <circle cx="72" cy="92" r="11" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3,2"/>
+          <path class="move-arc" d="M 128 92 L 88 92"/>
+
+          <circle class="finger-note" cx="136" cy="92" r="12"/>
+          <text class="finger-text" x="136" y="92" dy=".35em">1</text>
+          <circle class="finger-note" cx="200" cy="74" r="12"/>
+          <text class="finger-text" x="200" y="74" dy=".35em">2</text>
+          <circle class="finger-note" cx="264" cy="56" r="12"/>
+          <text class="finger-text" x="264" y="56" dy=".35em">3</text>
+          <circle class="finger-note" cx="328" cy="38" r="12"/>
+          <text class="finger-text" x="328" y="38" dy=".35em">4</text>
+        </svg>
+      </div>
+      <p class="panel-desc">Position de départ, en escalier sur les 4 cordes graves : index case 11 (corde 6), majeur case 12 (corde 5), annulaire case 13 (corde 4), auriculaire case 14 (corde 3). <strong>1)</strong> Joue les 4 cordes l'une après l'autre, doigts posés. <strong>2)</strong> Décale seulement l'index d'une case vers la gauche (case 10), les 3 autres doigts restent posés — rejoue les 4 cordes. <strong>3)</strong> Décale le majeur d'une case, rejoue. <strong>4)</strong> Décale l'annulaire d'une case, rejoue. <strong>5)</strong> Décale l'auriculaire d'une case, rejoue — les 4 doigts sont de nouveau en escalier, une case plus bas. Recommence en bougeant l'index en premier, et continue à descendre tout le manche.</p>
+      <p class="panel-benefit"><span class="panel-benefit-label">Bienfaits</span>Renforce l'écartement et l'indépendance des doigts en gardant une position de main fixe : chaque doigt doit rester stable pendant que les autres bougent. C'est la base de toute technique chromatique et du jeu "en position".</p>
+    </div>
+
+    <!-- Le crabe -->
+    <div class="panel" id="crabe">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Décalage</span>
+          <span class="panel-roman">Le crabe</span>
+        </div>
+        <div class="panel-meta">motif qui se décale d'une case</div>
+      </div>
+      <div class="fretboard-wrap">
+        <svg class="fretboard" viewBox="0 0 410 110" xmlns="http://www.w3.org/2000/svg">
+          <line class="string-line" x1="40" y1="20" x2="370" y2="20"/>
+          <line class="string-line" x1="40" y1="38" x2="370" y2="38"/>
+          <line class="string-line" x1="40" y1="56" x2="370" y2="56"/>
+          <line class="fret-line" x1="40" y1="10" x2="40" y2="66"/>
+          <line class="fret-line" x1="95" y1="10" x2="95" y2="66"/>
+          <line class="fret-line" x1="150" y1="10" x2="150" y2="66"/>
+          <line class="fret-line" x1="205" y1="10" x2="205" y2="66"/>
+          <line class="fret-line" x1="260" y1="10" x2="260" y2="66"/>
+          <line class="fret-line" x1="315" y1="10" x2="315" y2="66"/>
+          <line class="fret-line" x1="370" y1="10" x2="370" y2="66"/>
+          <text class="fret-label" x="67.5" y="84" text-anchor="middle">1</text>
+          <text class="fret-label" x="122.5" y="84" text-anchor="middle">2</text>
+          <text class="fret-label" x="177.5" y="84" text-anchor="middle">3</text>
+          <text class="fret-label" x="232.5" y="84" text-anchor="middle">4</text>
+          <text class="fret-label" x="287.5" y="84" text-anchor="middle">5</text>
+          <text class="fret-label" x="342.5" y="84" text-anchor="middle">6</text>
+          <text class="string-label" x="22" y="20" text-anchor="middle" dy=".35em">D</text>
+          <text class="string-label" x="22" y="38" text-anchor="middle" dy=".35em">A</text>
+          <text class="string-label" x="22" y="56" text-anchor="middle" dy=".35em">E</text>
+
+          <!-- corde E : cases 1-4, doigts 1-2-3-4 -->
+          <circle class="finger-note" cx="67.5" cy="56" r="11"/><text class="finger-text" x="67.5" y="56" dy=".35em">1</text>
+          <circle class="finger-note" cx="122.5" cy="56" r="11"/><text class="finger-text" x="122.5" y="56" dy=".35em">2</text>
+          <circle class="finger-note" cx="177.5" cy="56" r="11"/><text class="finger-text" x="177.5" y="56" dy=".35em">3</text>
+          <circle class="finger-note" cx="232.5" cy="56" r="11"/><text class="finger-text" x="232.5" y="56" dy=".35em">4</text>
+
+          <!-- corde A : cases 2-5, doigts 1-2-3-4 -->
+          <circle class="finger-note" cx="122.5" cy="38" r="11"/><text class="finger-text" x="122.5" y="38" dy=".35em">1</text>
+          <circle class="finger-note" cx="177.5" cy="38" r="11"/><text class="finger-text" x="177.5" y="38" dy=".35em">2</text>
+          <circle class="finger-note" cx="232.5" cy="38" r="11"/><text class="finger-text" x="232.5" y="38" dy=".35em">3</text>
+          <circle class="finger-note" cx="287.5" cy="38" r="11"/><text class="finger-text" x="287.5" y="38" dy=".35em">4</text>
+
+          <!-- corde D : cases 3-6, doigts 1-2-3-4 -->
+          <circle class="finger-note" cx="177.5" cy="20" r="11"/><text class="finger-text" x="177.5" y="20" dy=".35em">1</text>
+          <circle class="finger-note" cx="232.5" cy="20" r="11"/><text class="finger-text" x="232.5" y="20" dy=".35em">2</text>
+          <circle class="finger-note" cx="287.5" cy="20" r="11"/><text class="finger-text" x="287.5" y="20" dy=".35em">3</text>
+          <circle class="finger-note" cx="342.5" cy="20" r="11"/><text class="finger-text" x="342.5" y="20" dy=".35em">4</text>
+        </svg>
+      </div>
+      <p class="panel-desc">Même motif 1-2-3-4 que la torture, mais qui se décale d'une case à chaque changement de corde — comme des pattes qui avancent, d'où le nom. Continue le décalage sur les cordes G, B et e en remontant tout le manche.</p>
+      <p class="panel-benefit"><span class="panel-benefit-label">Bienfaits</span>Travaille la coordination entre les deux mains en traversant les cordes tout en décalant la forme — utile pour les changements de position fluides et la précision du passage d'une corde à l'autre.</p>
+    </div>
+
+    <!-- L'araignée -->
+    <div class="panel" id="araignee">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Corde par corde</span>
+          <span class="panel-roman">L'araignée</span>
+        </div>
+        <div class="panel-meta">un doigt à la fois change de corde</div>
+      </div>
+      <div class="fretboard-wrap">
+        <svg class="fretboard" viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg">
+          <line class="string-line" x1="40" y1="38" x2="320" y2="38"/>
+          <line class="string-line" x1="40" y1="74" x2="320" y2="74"/>
+          <line class="fret-line" x1="40" y1="24" x2="40" y2="88"/>
+          <line class="fret-line" x1="110" y1="24" x2="110" y2="88"/>
+          <line class="fret-line" x1="180" y1="24" x2="180" y2="88"/>
+          <line class="fret-line" x1="250" y1="24" x2="250" y2="88"/>
+          <line class="fret-line" x1="320" y1="24" x2="320" y2="88"/>
+          <text class="fret-label" x="75" y="104" text-anchor="middle">5</text>
+          <text class="fret-label" x="145" y="104" text-anchor="middle">6</text>
+          <text class="fret-label" x="215" y="104" text-anchor="middle">7</text>
+          <text class="fret-label" x="285" y="104" text-anchor="middle">8</text>
+          <text class="string-label" x="22" y="38" text-anchor="middle" dy=".35em">e</text>
+          <text class="string-label" x="22" y="74" text-anchor="middle" dy=".35em">B</text>
+
+          <path class="move-arc" d="M 75 50 L 75 61"/>
+          <circle cx="75" cy="74" r="11" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3,2"/>
+
+          <circle class="finger-note" cx="75" cy="38" r="12"/>
+          <text class="finger-text" x="75" y="38" dy=".35em">1</text>
+          <circle class="finger-note" cx="145" cy="38" r="12"/>
+          <text class="finger-text" x="145" y="38" dy=".35em">2</text>
+          <circle class="finger-note" cx="215" cy="38" r="12"/>
+          <text class="finger-text" x="215" y="38" dy=".35em">3</text>
+          <circle class="finger-note" cx="285" cy="38" r="12"/>
+          <text class="finger-text" x="285" y="38" dy=".35em">4</text>
+        </svg>
+      </div>
+      <p class="panel-desc">Sur la corde 1 (e aigu) : <strong>index case 5</strong>, puis <strong>majeur case 6</strong> (index posé), puis <strong>annulaire case 7</strong> (les 2 précédents posés), puis <strong>auriculaire case 8</strong> (les 3 précédents posés) — les 4 doigts restent posés ensemble sur la corde 1. Déplace ensuite l'index sur la <strong>corde 2, case 5</strong> — les 3 autres doigts restent posés sur la corde 1 — puis avance le majeur sur la corde 2 case 6, l'annulaire case 7, l'auriculaire case 8, un doigt à la fois. Continue corde par corde jusqu'en haut du manche, puis redescends de la même façon. Tous les doigts doivent toujours rester posés.</p>
+      <p class="panel-benefit"><span class="panel-benefit-label">Bienfaits</span>Développe l'indépendance des doigts et leur capacité à rester ancrés pendant qu'un seul bouge — une compétence clé pour des changements d'accords propres et pour les arpèges où plusieurs doigts doivent tenir leur position.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

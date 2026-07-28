@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gammes — Guitare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-soft);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card:hover {
+      background: var(--bg-accent);
+      border-color: var(--line);
+    }
+
+    .card.disabled {
+      opacity: 0.55;
+      cursor: default;
+    }
+
+    .card-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-soon {
+      font-family: 'Manrope', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--bg-accent);
+      border: 1px solid var(--line-soft);
+      border-radius: 2px;
+      padding: 2px 6px;
+    }
+
+    .card-title {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 19px;
+      color: var(--root);
+    }
+
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 540px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav-root" data-page="gammes"></div>
+  <script src="js/nav.js"></script>
+
+  <div class="container">
+
+    <header class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">Guitare</p>
+        <h1>Gammes</h1>
+        <p class="subtitle">Toutes les gammes vues en cours, une page par gamme.</p>
+      </div>
+    </header>
+
+    <div class="cards">
+      <a class="card" href="pentatonique-mineure.html">
+        <span class="card-label">Gamme</span>
+        <span class="card-title">Pentatonique mineure</span>
+        <span class="card-desc">Les 5 positions de la gamme, sur toutes les toniques.</span>
+      </a>
+
+      <a class="card" href="do-majeur.html">
+        <span class="card-label">Gamme</span>
+        <span class="card-title">Do majeur</span>
+        <span class="card-desc">Position ouverte, une octave — Do Ré Mi Fa Sol La Si Do.</span>
+      </a>
+
+      <div class="card disabled">
+        <span class="card-label">Gamme <span class="card-soon">Bientôt</span></span>
+        <span class="card-title">Blues</span>
+        <span class="card-desc">Comme la pentatonique mineure, avec les notes blues en plus — à ajouter.</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

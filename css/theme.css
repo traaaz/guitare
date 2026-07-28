@@ -1,0 +1,306 @@
+/* Socle partagé — palette, polices et composants communs,
+   extraits de pentatonique-mineure.html */
+
+:root {
+  --bg: #f4eee2;
+  --bg-card: #fbf6ec;
+  --bg-accent: #ede5d3;
+  --text: #2c2620;
+  --text-soft: #7a6f5e;
+  --text-muted: #a89a85;
+  --line: #d8cdb8;
+  --line-soft: #e5dcc9;
+  --root: #ab6047;
+  --root-soft: #c47a5f;
+  --note: #93a487;
+  --note-soft: #c4d0b8;
+  --note-text: #38463a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  font-family: 'Manrope', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.5;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(171, 96, 71, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(147, 164, 135, 0.06) 0%, transparent 45%);
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 28px 20px;
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* --- Hero --- */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line-soft);
+  margin-bottom: 22px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-left .eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.hero-left h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(20px, 4vw, 26px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.hero-left h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--root);
+}
+
+.hero-left .subtitle {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12.5px;
+  color: var(--text-soft);
+  margin-top: 6px;
+  letter-spacing: 0.01em;
+}
+
+/* --- Chip row (used as jump-links / selectors) --- */
+.selector {
+  margin-bottom: 18px;
+}
+
+.selector-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.chips {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: wrap;
+}
+
+.chips::-webkit-scrollbar { height: 3px; }
+.chips::-webkit-scrollbar-track { background: transparent; }
+.chips::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+
+.chip {
+  flex-shrink: 0;
+  padding: 7px 11px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-soft);
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.chip:hover {
+  background: var(--bg-accent);
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.chip.active {
+  background: var(--root);
+  color: #fbf6ec;
+  border-color: var(--root);
+}
+
+/* --- Panel / fiche card --- */
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  padding: 18px 22px 16px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-soft);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.panel-title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.panel-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.panel-roman {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.panel-meta {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.panel-desc {
+  font-size: 12.5px;
+  color: var(--text-soft);
+  line-height: 1.6;
+  letter-spacing: 0.005em;
+}
+
+/* --- Fretboard / diagram SVG (style commun aux diagrammes de manche) --- */
+.fretboard-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 4px 0 12px;
+}
+
+.fretboard {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+}
+
+.string-line { stroke: var(--line); stroke-width: 1; }
+.fret-line   { stroke: var(--line); stroke-width: 1.5; }
+.fret-line.nut { stroke: var(--text-muted); stroke-width: 3.5; }
+
+.fret-label {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 12px;
+  fill: var(--text-muted);
+  font-weight: 300;
+}
+
+.string-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  fill: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.note-circle {
+  fill: var(--note-soft);
+  stroke: var(--note);
+  stroke-width: 1;
+}
+
+.note-circle.root {
+  fill: var(--root);
+  stroke: var(--root);
+}
+
+.note-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--note-text);
+  text-anchor: middle;
+  letter-spacing: 0.01em;
+}
+
+.note-text.root { fill: #fbf6ec; }
+
+/* --- Legend --- */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+  font-size: 11.5px;
+  color: var(--text-soft);
+  letter-spacing: 0.02em;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dot-root { background: var(--root); }
+.dot-note { background: var(--note-soft); border: 1px solid var(--note); }
+
+/* --- Responsive --- */
+@media (max-width: 540px) {
+  .container { padding: 16px 14px 14px; }
+  .hero { padding-bottom: 14px; margin-bottom: 16px; }
+  .panel { padding: 14px 14px 12px; }
+  .panel-roman { font-size: 19px; }
+  .chip { padding: 6px 10px; font-size: 11px; }
+  .selector-label { font-size: 9px; margin-bottom: 6px; }
+}

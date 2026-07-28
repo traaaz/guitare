@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do majeur — Guitare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    .scale-path {
+      fill: none;
+      stroke: var(--line);
+      stroke-width: 1.2;
+      stroke-dasharray: 3,2.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav-root" data-page="do-majeur"></div>
+  <script src="js/nav.js"></script>
+
+  <div class="container">
+
+    <header class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">Guitare</p>
+        <h1>Do <em>majeur</em></h1>
+        <p class="subtitle">Position ouverte, une octave.</p>
+      </div>
+    </header>
+
+    <div class="panel" id="position-ouverte">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Position</span>
+          <span class="panel-roman">Ouverte</span>
+        </div>
+        <div class="panel-meta">cordes La, Ré, Sol, Si</div>
+      </div>
+
+      <div class="fretboard-wrap">
+        <svg class="fretboard" viewBox="0 0 290 110" xmlns="http://www.w3.org/2000/svg">
+          <line class="string-line" x1="15" y1="20" x2="250" y2="20"/>
+          <line class="string-line" x1="15" y1="38" x2="250" y2="38"/>
+          <line class="string-line" x1="15" y1="56" x2="250" y2="56"/>
+          <line class="string-line" x1="15" y1="74" x2="250" y2="74"/>
+
+          <line class="fret-line nut" x1="40" y1="10" x2="40" y2="84"/>
+          <line class="fret-line" x1="110" y1="10" x2="110" y2="84"/>
+          <line class="fret-line" x1="180" y1="10" x2="180" y2="84"/>
+          <line class="fret-line" x1="250" y1="10" x2="250" y2="84"/>
+
+          <text class="fret-label" x="75" y="98" text-anchor="middle">1</text>
+          <text class="fret-label" x="145" y="98" text-anchor="middle">2</text>
+          <text class="fret-label" x="215" y="98" text-anchor="middle">3</text>
+
+          <text class="string-label" x="6" y="20" text-anchor="middle" dy=".35em">B</text>
+          <text class="string-label" x="6" y="38" text-anchor="middle" dy=".35em">G</text>
+          <text class="string-label" x="6" y="56" text-anchor="middle" dy=".35em">D</text>
+          <text class="string-label" x="6" y="74" text-anchor="middle" dy=".35em">A</text>
+
+          <!-- Trajet ascendant de la gamme -->
+          <path class="scale-path" d="M 215 74 L 22 56 L 145 56 L 215 56 L 22 38 L 145 38 L 22 20 L 75 20"/>
+
+          <!-- A : Do (3) -->
+          <circle class="note-circle root" cx="215" cy="74" r="12"/>
+          <text class="note-text root" x="215" y="74" dy=".35em">C</text>
+
+          <!-- D : Ré (0) Mi (2) Fa (3) -->
+          <circle class="note-circle" cx="22" cy="56" r="12"/>
+          <text class="note-text" x="22" y="56" dy=".35em">D</text>
+          <circle class="note-circle" cx="145" cy="56" r="12"/>
+          <text class="note-text" x="145" y="56" dy=".35em">E</text>
+          <circle class="note-circle" cx="215" cy="56" r="12"/>
+          <text class="note-text" x="215" y="56" dy=".35em">F</text>
+
+          <!-- G : Sol (0) La (2) -->
+          <circle class="note-circle" cx="22" cy="38" r="12"/>
+          <text class="note-text" x="22" y="38" dy=".35em">G</text>
+          <circle class="note-circle" cx="145" cy="38" r="12"/>
+          <text class="note-text" x="145" y="38" dy=".35em">A</text>
+
+          <!-- B : Si (0) Do (1) -->
+          <circle class="note-circle" cx="22" cy="20" r="12"/>
+          <text class="note-text" x="22" y="20" dy=".35em">B</text>
+          <circle class="note-circle root" cx="75" cy="20" r="12"/>
+          <text class="note-text root" x="75" y="20" dy=".35em">C</text>
+        </svg>
+      </div>
+
+      <p class="panel-desc">Do (corde La, case 3) — Ré (corde Ré, à vide) — Mi (case 2) — Fa (case 3) — Sol (corde Sol, à vide) — La (case 2) — Si (corde Si, à vide) — Do (case 1). Les cercles pointillés indiquent l'ordre de la gamme en montant.</p>
+    </div>
+
+    <div class="panel" id="deux-octaves">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">À venir</span>
+          <span class="panel-roman">2 octaves (démanché)</span>
+        </div>
+      </div>
+      <p class="panel-desc">La même gamme continue sur 2 octaves, en changeant de position de la main à partir du 2ᵉ Do. Vu en cours mais pas encore détaillé ici — à préciser au prochain point.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

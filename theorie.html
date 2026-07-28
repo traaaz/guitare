@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Théorie — Guitare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    .circle-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 4px 0 14px;
+    }
+    .circle-svg {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      display: block;
+    }
+    .cof-ring { fill: none; stroke: var(--line); stroke-width: 1; }
+    .cof-arrow-rotor {
+      transform-origin: 210px 210px;
+      animation: cof-spin 10s linear infinite;
+    }
+    .cof-arrow-path {
+      fill: none;
+      stroke: var(--root);
+      stroke-width: 3;
+      stroke-linecap: round;
+      opacity: 0.8;
+    }
+    @keyframes cof-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cof-arrow-rotor { animation: none; }
+    }
+    .cof-main {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 21px;
+      fill: var(--text);
+      text-anchor: middle;
+    }
+    .cof-main.tonic { fill: var(--root); }
+    .cof-alt {
+      font-family: 'Manrope', sans-serif;
+      font-size: 10.5px;
+      font-weight: 500;
+      fill: var(--text-muted);
+      text-anchor: middle;
+    }
+    .note-natural { fill: var(--note); stroke: var(--note); stroke-width: 1; }
+    .note-natural-text {
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      fill: #fbf6ec;
+      text-anchor: middle;
+    }
+    .note-accidental { fill: var(--bg-card); stroke: var(--line); stroke-width: 1; }
+    .note-accidental-text {
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      fill: var(--text-soft);
+      text-anchor: middle;
+    }
+    .move-label {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 13px;
+      text-anchor: middle;
+    }
+    .poq-diagrams {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 4px 0 12px;
+    }
+    .poq-diagram-block {
+      flex: 1;
+      min-width: 220px;
+      max-width: 260px;
+      text-align: center;
+    }
+    .poq-diagram-title {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .note-mute-text {
+      font-family: 'Manrope', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      fill: var(--text-muted);
+      text-anchor: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav-root" data-page="theorie"></div>
+  <script src="js/nav.js"></script>
+
+  <div class="container">
+
+    <header class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">Guitare</p>
+        <h1>Théorie</h1>
+        <p class="subtitle">Les notions données en cours, avec la date où je les ai reçues.</p>
+      </div>
+    </header>
+
+    <!-- Fiche : Cercle des quartes -->
+    <div class="panel" id="cercle-des-quartes">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Fiche</span>
+          <span class="panel-roman">Cercle des quartes</span>
+        </div>
+        <div class="panel-meta">Reçu le 16/07/2026 — cours avec Claire</div>
+      </div>
+
+      <div class="circle-wrap">
+        <svg class="circle-svg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+          <circle class="cof-ring" cx="210" cy="210" r="140"/>
+
+          <defs>
+            <marker id="cof-arrow-head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 Z" fill="var(--root)"/>
+            </marker>
+          </defs>
+
+          <!-- flèches tournantes indiquant le sens de lecture (horaire) -->
+          <g class="cof-arrow-rotor">
+            <path class="cof-arrow-path" d="M 210 70 A 140 140 0 0 1 300 102.8" marker-end="url(#cof-arrow-head)"/>
+            <path class="cof-arrow-path" d="M 210 350 A 140 140 0 0 1 120 317.2" marker-end="url(#cof-arrow-head)"/>
+          </g>
+
+          <!-- C -->
+          <text class="cof-main tonic" x="210" y="40" dy=".35em">C</text>
+
+          <!-- F -->
+          <text class="cof-main" x="295" y="63" dy=".35em">F</text>
+
+          <!-- Bb / A# -->
+          <text class="cof-main" x="349" y="125" dy=".35em">Bb</text>
+          <text class="cof-alt" x="382" y="112">A#</text>
+
+          <!-- Eb / D# -->
+          <text class="cof-main" x="372" y="210" dy=".35em">Eb</text>
+          <text class="cof-alt" x="405" y="197">D#</text>
+
+          <!-- Ab / G# -->
+          <text class="cof-main" x="349" y="295" dy=".35em">Ab</text>
+          <text class="cof-alt" x="382" y="308">G#</text>
+
+          <!-- Db / C# -->
+          <text class="cof-main" x="295" y="357" dy=".35em">Db</text>
+          <text class="cof-alt" x="310" y="378">C#</text>
+
+          <!-- Gb / F# -->
+          <text class="cof-main" x="210" y="380" dy=".35em">Gb</text>
+          <text class="cof-alt" x="225" y="401">F#</text>
+
+          <!-- B -->
+          <text class="cof-main" x="125" y="357" dy=".35em">B</text>
+
+          <!-- E -->
+          <text class="cof-main" x="63" y="295" dy=".35em">E</text>
+
+          <!-- A -->
+          <text class="cof-main" x="40" y="210" dy=".35em">A</text>
+
+          <!-- D -->
+          <text class="cof-main" x="63" y="125" dy=".35em">D</text>
+
+          <!-- G -->
+          <text class="cof-main" x="125" y="63" dy=".35em">G</text>
+        </svg>
+      </div>
+
+      <p class="panel-desc">En partant de Do et en tournant dans le sens horaire, chaque tonalité est à une quarte au-dessus de la précédente (ce qui revient à descendre d'une quinte : quarte + quinte = une octave). Sert à visualiser les tonalités voisines, trouver les armures et les accords qui vont bien ensemble. À creuser : comment l'utiliser pour trouver rapidement les dièses/bémols d'une tonalité.</p>
+    </div>
+
+    <!-- Fiche : Trouver les notes sur le manche -->
+    <div class="panel" id="notes-manche">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Fiche</span>
+          <span class="panel-roman">Les notes sur le manche</span>
+        </div>
+        <div class="panel-meta">Reçu le 16/07/2026 — cours avec Claire</div>
+      </div>
+
+      <div class="circle-wrap">
+        <svg class="circle-svg" viewBox="0 0 480 186" xmlns="http://www.w3.org/2000/svg" style="max-width: 540px;">
+          <!-- 6 cordes, cases 1 à 12 -->
+          <line class="string-line" x1="30" y1="25" x2="450" y2="25"/>
+          <line class="string-line" x1="30" y1="49" x2="450" y2="49"/>
+          <line class="string-line" x1="30" y1="73" x2="450" y2="73"/>
+          <line class="string-line" x1="30" y1="97" x2="450" y2="97"/>
+          <line class="string-line" x1="30" y1="121" x2="450" y2="121"/>
+          <line class="string-line" x1="30" y1="145" x2="450" y2="145"/>
+
+          <line class="fret-line" x1="30" y1="12" x2="30" y2="158"/>
+          <line class="fret-line" x1="65" y1="12" x2="65" y2="158"/>
+          <line class="fret-line" x1="100" y1="12" x2="100" y2="158"/>
+          <line class="fret-line" x1="135" y1="12" x2="135" y2="158"/>
+          <line class="fret-line" x1="170" y1="12" x2="170" y2="158"/>
+          <line class="fret-line" x1="205" y1="12" x2="205" y2="158"/>
+          <line class="fret-line" x1="240" y1="12" x2="240" y2="158"/>
+          <line class="fret-line" x1="275" y1="12" x2="275" y2="158"/>
+          <line class="fret-line" x1="310" y1="12" x2="310" y2="158"/>
+          <line class="fret-line" x1="345" y1="12" x2="345" y2="158"/>
+          <line class="fret-line" x1="380" y1="12" x2="380" y2="158"/>
+          <line class="fret-line" x1="415" y1="12" x2="415" y2="158"/>
+          <line class="fret-line" x1="450" y1="12" x2="450" y2="158"/>
+
+          <text class="fret-label" x="117.5" y="174" text-anchor="middle">3</text>
+          <text class="fret-label" x="187.5" y="174" text-anchor="middle">5</text>
+          <text class="fret-label" x="257.5" y="174" text-anchor="middle">7</text>
+          <text class="fret-label" x="327.5" y="174" text-anchor="middle">9</text>
+          <text class="fret-label" x="432.5" y="174" text-anchor="middle">12</text>
+
+          <text class="string-label" x="16" y="25" text-anchor="middle" dy=".35em">e</text>
+          <text class="string-label" x="16" y="49" text-anchor="middle" dy=".35em">B</text>
+          <text class="string-label" x="16" y="73" text-anchor="middle" dy=".35em">G</text>
+          <text class="string-label" x="16" y="97" text-anchor="middle" dy=".35em">D</text>
+          <text class="string-label" x="16" y="121" text-anchor="middle" dy=".35em">A</text>
+          <text class="string-label" x="16" y="145" text-anchor="middle" dy=".35em">E</text>
+
+          <!-- corde e : F F# G G# A Bb B C C# D D# E -->
+          <circle class="note-natural" cx="47.5" cy="25" r="12"/><text class="note-natural-text" x="47.5" y="25" dy=".35em">F</text>
+          <circle class="note-accidental" cx="82.5" cy="25" r="12"/><text class="note-accidental-text" x="82.5" y="25" dy=".35em">F#</text>
+          <circle class="note-natural" cx="117.5" cy="25" r="12"/><text class="note-natural-text" x="117.5" y="25" dy=".35em">G</text>
+          <circle class="note-accidental" cx="152.5" cy="25" r="12"/><text class="note-accidental-text" x="152.5" y="25" dy=".35em">G#</text>
+          <circle class="note-natural" cx="187.5" cy="25" r="12"/><text class="note-natural-text" x="187.5" y="25" dy=".35em">A</text>
+          <circle class="note-accidental" cx="222.5" cy="25" r="12"/><text class="note-accidental-text" x="222.5" y="25" dy=".35em">Bb</text>
+          <circle class="note-natural" cx="257.5" cy="25" r="12"/><text class="note-natural-text" x="257.5" y="25" dy=".35em">B</text>
+          <circle class="note-natural" cx="292.5" cy="25" r="12"/><text class="note-natural-text" x="292.5" y="25" dy=".35em">C</text>
+          <circle class="note-accidental" cx="327.5" cy="25" r="12"/><text class="note-accidental-text" x="327.5" y="25" dy=".35em">C#</text>
+          <circle class="note-natural" cx="362.5" cy="25" r="12"/><text class="note-natural-text" x="362.5" y="25" dy=".35em">D</text>
+          <circle class="note-accidental" cx="397.5" cy="25" r="12"/><text class="note-accidental-text" x="397.5" y="25" dy=".35em">D#</text>
+          <circle class="note-natural" cx="432.5" cy="25" r="12"/><text class="note-natural-text" x="432.5" y="25" dy=".35em">E</text>
+
+          <!-- corde B : C C# D D# E F F# G G# A Bb B -->
+          <circle class="note-natural" cx="47.5" cy="49" r="12"/><text class="note-natural-text" x="47.5" y="49" dy=".35em">C</text>
+          <circle class="note-accidental" cx="82.5" cy="49" r="12"/><text class="note-accidental-text" x="82.5" y="49" dy=".35em">C#</text>
+          <circle class="note-natural" cx="117.5" cy="49" r="12"/><text class="note-natural-text" x="117.5" y="49" dy=".35em">D</text>
+          <circle class="note-accidental" cx="152.5" cy="49" r="12"/><text class="note-accidental-text" x="152.5" y="49" dy=".35em">D#</text>
+          <circle class="note-natural" cx="187.5" cy="49" r="12"/><text class="note-natural-text" x="187.5" y="49" dy=".35em">E</text>
+          <circle class="note-natural" cx="222.5" cy="49" r="12"/><text class="note-natural-text" x="222.5" y="49" dy=".35em">F</text>
+          <circle class="note-accidental" cx="257.5" cy="49" r="12"/><text class="note-accidental-text" x="257.5" y="49" dy=".35em">F#</text>
+          <circle class="note-natural" cx="292.5" cy="49" r="12"/><text class="note-natural-text" x="292.5" y="49" dy=".35em">G</text>
+          <circle class="note-accidental" cx="327.5" cy="49" r="12"/><text class="note-accidental-text" x="327.5" y="49" dy=".35em">G#</text>
+          <circle class="note-natural" cx="362.5" cy="49" r="12"/><text class="note-natural-text" x="362.5" y="49" dy=".35em">A</text>
+          <circle class="note-accidental" cx="397.5" cy="49" r="12"/><text class="note-accidental-text" x="397.5" y="49" dy=".35em">Bb</text>
+          <circle class="note-natural" cx="432.5" cy="49" r="12"/><text class="note-natural-text" x="432.5" y="49" dy=".35em">B</text>
+
+          <!-- corde G : G# A Bb B C C# D D# E F F# G -->
+          <circle class="note-accidental" cx="47.5" cy="73" r="12"/><text class="note-accidental-text" x="47.5" y="73" dy=".35em">G#</text>
+          <circle class="note-natural" cx="82.5" cy="73" r="12"/><text class="note-natural-text" x="82.5" y="73" dy=".35em">A</text>
+          <circle class="note-accidental" cx="117.5" cy="73" r="12"/><text class="note-accidental-text" x="117.5" y="73" dy=".35em">Bb</text>
+          <circle class="note-natural" cx="152.5" cy="73" r="12"/><text class="note-natural-text" x="152.5" y="73" dy=".35em">B</text>
+          <circle class="note-natural" cx="187.5" cy="73" r="12"/><text class="note-natural-text" x="187.5" y="73" dy=".35em">C</text>
+          <circle class="note-accidental" cx="222.5" cy="73" r="12"/><text class="note-accidental-text" x="222.5" y="73" dy=".35em">C#</text>
+          <circle class="note-natural" cx="257.5" cy="73" r="12"/><text class="note-natural-text" x="257.5" y="73" dy=".35em">D</text>
+          <circle class="note-accidental" cx="292.5" cy="73" r="12"/><text class="note-accidental-text" x="292.5" y="73" dy=".35em">D#</text>
+          <circle class="note-natural" cx="327.5" cy="73" r="12"/><text class="note-natural-text" x="327.5" y="73" dy=".35em">E</text>
+          <circle class="note-natural" cx="362.5" cy="73" r="12"/><text class="note-natural-text" x="362.5" y="73" dy=".35em">F</text>
+          <circle class="note-accidental" cx="397.5" cy="73" r="12"/><text class="note-accidental-text" x="397.5" y="73" dy=".35em">F#</text>
+          <circle class="note-natural" cx="432.5" cy="73" r="12"/><text class="note-natural-text" x="432.5" y="73" dy=".35em">G</text>
+
+          <!-- corde D : D# E F F# G G# A Bb B C C# D -->
+          <circle class="note-accidental" cx="47.5" cy="97" r="12"/><text class="note-accidental-text" x="47.5" y="97" dy=".35em">D#</text>
+          <circle class="note-natural" cx="82.5" cy="97" r="12"/><text class="note-natural-text" x="82.5" y="97" dy=".35em">E</text>
+          <circle class="note-natural" cx="117.5" cy="97" r="12"/><text class="note-natural-text" x="117.5" y="97" dy=".35em">F</text>
+          <circle class="note-accidental" cx="152.5" cy="97" r="12"/><text class="note-accidental-text" x="152.5" y="97" dy=".35em">F#</text>
+          <circle class="note-natural" cx="187.5" cy="97" r="12"/><text class="note-natural-text" x="187.5" y="97" dy=".35em">G</text>
+          <circle class="note-accidental" cx="222.5" cy="97" r="12"/><text class="note-accidental-text" x="222.5" y="97" dy=".35em">G#</text>
+          <circle class="note-natural" cx="257.5" cy="97" r="12"/><text class="note-natural-text" x="257.5" y="97" dy=".35em">A</text>
+          <circle class="note-accidental" cx="292.5" cy="97" r="12"/><text class="note-accidental-text" x="292.5" y="97" dy=".35em">Bb</text>
+          <circle class="note-natural" cx="327.5" cy="97" r="12"/><text class="note-natural-text" x="327.5" y="97" dy=".35em">B</text>
+          <circle class="note-natural" cx="362.5" cy="97" r="12"/><text class="note-natural-text" x="362.5" y="97" dy=".35em">C</text>
+          <circle class="note-accidental" cx="397.5" cy="97" r="12"/><text class="note-accidental-text" x="397.5" y="97" dy=".35em">C#</text>
+          <circle class="note-natural" cx="432.5" cy="97" r="12"/><text class="note-natural-text" x="432.5" y="97" dy=".35em">D</text>
+
+          <!-- corde A : Bb B C C# D D# E F F# G G# A -->
+          <circle class="note-accidental" cx="47.5" cy="121" r="12"/><text class="note-accidental-text" x="47.5" y="121" dy=".35em">Bb</text>
+          <circle class="note-natural" cx="82.5" cy="121" r="12"/><text class="note-natural-text" x="82.5" y="121" dy=".35em">B</text>
+          <circle class="note-natural" cx="117.5" cy="121" r="12"/><text class="note-natural-text" x="117.5" y="121" dy=".35em">C</text>
+          <circle class="note-accidental" cx="152.5" cy="121" r="12"/><text class="note-accidental-text" x="152.5" y="121" dy=".35em">C#</text>
+          <circle class="note-natural" cx="187.5" cy="121" r="12"/><text class="note-natural-text" x="187.5" y="121" dy=".35em">D</text>
+          <circle class="note-accidental" cx="222.5" cy="121" r="12"/><text class="note-accidental-text" x="222.5" y="121" dy=".35em">D#</text>
+          <circle class="note-natural" cx="257.5" cy="121" r="12"/><text class="note-natural-text" x="257.5" y="121" dy=".35em">E</text>
+          <circle class="note-natural" cx="292.5" cy="121" r="12"/><text class="note-natural-text" x="292.5" y="121" dy=".35em">F</text>
+          <circle class="note-accidental" cx="327.5" cy="121" r="12"/><text class="note-accidental-text" x="327.5" y="121" dy=".35em">F#</text>
+          <circle class="note-natural" cx="362.5" cy="121" r="12"/><text class="note-natural-text" x="362.5" y="121" dy=".35em">G</text>
+          <circle class="note-accidental" cx="397.5" cy="121" r="12"/><text class="note-accidental-text" x="397.5" y="121" dy=".35em">G#</text>
+          <circle class="note-natural" cx="432.5" cy="121" r="12"/><text class="note-natural-text" x="432.5" y="121" dy=".35em">A</text>
+
+          <!-- corde E : F F# G G# A Bb B C C# D D# E -->
+          <circle class="note-natural" cx="47.5" cy="145" r="12"/><text class="note-natural-text" x="47.5" y="145" dy=".35em">F</text>
+          <circle class="note-accidental" cx="82.5" cy="145" r="12"/><text class="note-accidental-text" x="82.5" y="145" dy=".35em">F#</text>
+          <circle class="note-natural" cx="117.5" cy="145" r="12"/><text class="note-natural-text" x="117.5" y="145" dy=".35em">G</text>
+          <circle class="note-accidental" cx="152.5" cy="145" r="12"/><text class="note-accidental-text" x="152.5" y="145" dy=".35em">G#</text>
+          <circle class="note-natural" cx="187.5" cy="145" r="12"/><text class="note-natural-text" x="187.5" y="145" dy=".35em">A</text>
+          <circle class="note-accidental" cx="222.5" cy="145" r="12"/><text class="note-accidental-text" x="222.5" y="145" dy=".35em">Bb</text>
+          <circle class="note-natural" cx="257.5" cy="145" r="12"/><text class="note-natural-text" x="257.5" y="145" dy=".35em">B</text>
+          <circle class="note-natural" cx="292.5" cy="145" r="12"/><text class="note-natural-text" x="292.5" y="145" dy=".35em">C</text>
+          <circle class="note-accidental" cx="327.5" cy="145" r="12"/><text class="note-accidental-text" x="327.5" y="145" dy=".35em">C#</text>
+          <circle class="note-natural" cx="362.5" cy="145" r="12"/><text class="note-natural-text" x="362.5" y="145" dy=".35em">D</text>
+          <circle class="note-accidental" cx="397.5" cy="145" r="12"/><text class="note-accidental-text" x="397.5" y="145" dy=".35em">D#</text>
+          <circle class="note-natural" cx="432.5" cy="145" r="12"/><text class="note-natural-text" x="432.5" y="145" dy=".35em">E</text>
+        </svg>
+      </div>
+
+      <p class="panel-desc">Pour retrouver n'importe quelle note sur le manche : on part des notes naturelles (sans dièse/bémol) qu'on connaît déjà, puis on remplit les cases entre les deux avec les altérations, en sachant qu'il n'y a pas de case entre Mi-Fa et Si-Do (elles sont déjà collées, donc pas d'altération entre les deux). Travaillé pour l'instant sur la <strong>corde de Mi grave (6ᵉ corde)</strong> — même logique à refaire ensuite sur les autres cordes.</p>
+    </div>
+
+    <!-- Fiche : Transposer une corde à l'autre -->
+    <div class="panel" id="transposition">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Fiche</span>
+          <span class="panel-roman">Transposer 6ᵉ → 4ᵉ → 2ᵉ corde</span>
+        </div>
+        <div class="panel-meta">Reçu le 16/07/2026 — cours avec Claire</div>
+      </div>
+
+      <div class="fretboard-wrap">
+        <svg class="fretboard" viewBox="0 0 300 178" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrowHeadTr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#93a487"/>
+            </marker>
+            <marker id="arrowHeadTrRoot" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#ab6047"/>
+            </marker>
+          </defs>
+
+          <!-- 6 cordes, nut + cases 1 à 6 -->
+          <line class="string-line" x1="30" y1="20" x2="240" y2="20"/>
+          <line class="string-line" x1="30" y1="42" x2="240" y2="42"/>
+          <line class="string-line" x1="30" y1="64" x2="240" y2="64" stroke-dasharray="3 3" opacity="0.55"/>
+          <line class="string-line" x1="30" y1="86" x2="240" y2="86"/>
+          <line class="string-line" x1="30" y1="108" x2="240" y2="108" stroke-dasharray="3 3" opacity="0.55"/>
+          <line class="string-line" x1="30" y1="130" x2="240" y2="130"/>
+
+          <line class="fret-line nut" x1="30" y1="10" x2="30" y2="140"/>
+          <line class="fret-line" x1="65" y1="10" x2="65" y2="140"/>
+          <line class="fret-line" x1="100" y1="10" x2="100" y2="140"/>
+          <line class="fret-line" x1="135" y1="10" x2="135" y2="140"/>
+          <line class="fret-line" x1="170" y1="10" x2="170" y2="140"/>
+          <line class="fret-line" x1="205" y1="10" x2="205" y2="140"/>
+          <line class="fret-line" x1="240" y1="10" x2="240" y2="140"/>
+
+          <text class="string-label" x="14" y="20" text-anchor="middle" dy=".35em">e</text>
+          <text class="string-label" x="14" y="42" text-anchor="middle" dy=".35em">B</text>
+          <text class="string-label" x="14" y="64" text-anchor="middle" dy=".35em" opacity="0.55">G</text>
+          <text class="string-label" x="14" y="86" text-anchor="middle" dy=".35em">D</text>
+          <text class="string-label" x="14" y="108" text-anchor="middle" dy=".35em" opacity="0.55">A</text>
+          <text class="string-label" x="14" y="130" text-anchor="middle" dy=".35em">E</text>
+
+          <text class="fret-label" x="47.5" y="152" text-anchor="middle">1</text>
+          <text class="fret-label" x="117.5" y="152" text-anchor="middle">3</text>
+          <text class="fret-label" x="222.5" y="152" text-anchor="middle">6</text>
+
+          <!-- trajet de la note Fa : 6e corde case 1 -> 4e corde case 3 -> 2e corde case 6 -->
+          <path d="M 56.8 124.1 Q 82.5 88 108.2 91.85" fill="none" stroke="#93a487" stroke-width="1.6" marker-end="url(#arrowHeadTr)"/>
+          <text class="move-label" x="76" y="96" style="fill:#93a487;">+2</text>
+
+          <path d="M 127.6 81.75 Q 170 44 212.4 46.25" fill="none" stroke="#ab6047" stroke-width="1.6" marker-end="url(#arrowHeadTrRoot)"/>
+          <text class="move-label" x="163" y="55" style="fill:#ab6047;">+3</text>
+
+          <circle class="note-circle root" cx="47.5" cy="130" r="9"/>
+          <text class="note-text root" x="47.5" y="130" dy=".35em" style="font-size:9.5px;">F</text>
+          <circle class="note-circle root" cx="117.5" cy="86" r="9"/>
+          <text class="note-text root" x="117.5" y="86" dy=".35em" style="font-size:9.5px;">F</text>
+          <circle class="note-circle root" cx="222.5" cy="42" r="9"/>
+          <text class="note-text root" x="222.5" y="42" dy=".35em" style="font-size:9.5px;">F</text>
+        </svg>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><span class="dot dot-note" style="border-color:#93a487;"></span>+2 cases en sautant une corde (règle générale)</div>
+        <div class="legend-item"><span class="dot dot-root"></span>+3 cases en sautant la corde Sol → Si (exception)</div>
+      </div>
+
+      <p class="panel-desc">Une même note se retrouve plus haut sur le manche en sautant une corde : normalement 2 cordes plus haut, 2 cases plus loin (6ᵉ → 4ᵉ, en pointillé la 5ᵉ corde sautée). Mais en traversant la paire Sol/Si (3ᵉ → 2ᵉ corde), l'écart entre cordes n'est plus une quarte mais une tierce majeure, donc la règle change : il faut 3 cases de plus, pas 2 — ici le Fa de la 6ᵉ corde case 1 devient le Fa de la 4ᵉ corde case 3, puis le Fa de la 2ᵉ corde case 6 (3ᵉ corde Sol sautée, en pointillé).</p>
+    </div>
+
+    <!-- Fiche : Progressions de quarte (formes mobiles) -->
+    <div class="panel" id="progressions-de-quarte">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Fiche</span>
+          <span class="panel-roman">Progressions de quarte — formes mobiles</span>
+        </div>
+        <div class="panel-meta">Reçu le 28/07/2026 — cours avec Claire</div>
+      </div>
+
+      <div class="poq-diagrams">
+        <div class="poq-diagram-block">
+          <div class="poq-diagram-title">Forme Mi majeur (racine 6ᵉ corde)</div>
+          <div class="fretboard-wrap">
+            <svg class="fretboard" viewBox="0 0 145 158" xmlns="http://www.w3.org/2000/svg">
+              <line class="string-line" x1="30" y1="20" x2="135" y2="20"/>
+              <line class="string-line" x1="30" y1="42" x2="135" y2="42"/>
+              <line class="string-line" x1="30" y1="64" x2="135" y2="64"/>
+              <line class="string-line" x1="30" y1="86" x2="135" y2="86"/>
+              <line class="string-line" x1="30" y1="108" x2="135" y2="108"/>
+              <line class="string-line" x1="30" y1="130" x2="135" y2="130"/>
+
+              <line class="fret-line nut" x1="30" y1="10" x2="30" y2="140"/>
+              <line class="fret-line" x1="65" y1="10" x2="65" y2="140"/>
+              <line class="fret-line" x1="100" y1="10" x2="100" y2="140"/>
+              <line class="fret-line" x1="135" y1="10" x2="135" y2="140"/>
+
+              <text class="fret-label" x="47.5" y="152" text-anchor="middle">0</text>
+              <text class="fret-label" x="82.5" y="152" text-anchor="middle">+1</text>
+              <text class="fret-label" x="117.5" y="152" text-anchor="middle">+2</text>
+
+              <text class="string-label" x="14" y="20" text-anchor="middle" dy=".35em">e</text>
+              <text class="string-label" x="14" y="42" text-anchor="middle" dy=".35em">B</text>
+              <text class="string-label" x="14" y="64" text-anchor="middle" dy=".35em">G</text>
+              <text class="string-label" x="14" y="86" text-anchor="middle" dy=".35em">D</text>
+              <text class="string-label" x="14" y="108" text-anchor="middle" dy=".35em">A</text>
+              <text class="string-label" x="14" y="130" text-anchor="middle" dy=".35em">E</text>
+
+              <circle class="note-circle" cx="47.5" cy="20" r="9"/>
+              <circle class="note-circle" cx="47.5" cy="42" r="9"/>
+              <circle class="note-circle" cx="82.5" cy="64" r="9"/>
+              <circle class="note-circle" cx="117.5" cy="86" r="9"/>
+              <circle class="note-circle" cx="117.5" cy="108" r="9"/>
+              <circle class="note-circle root" cx="47.5" cy="130" r="9"/>
+              <text class="note-text root" x="47.5" y="130" dy=".35em" style="font-size:9.5px;">R</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="poq-diagram-block">
+          <div class="poq-diagram-title">Forme La majeur (racine 5ᵉ corde)</div>
+          <div class="fretboard-wrap">
+            <svg class="fretboard" viewBox="0 0 145 158" xmlns="http://www.w3.org/2000/svg">
+              <line class="string-line" x1="30" y1="20" x2="135" y2="20"/>
+              <line class="string-line" x1="30" y1="42" x2="135" y2="42"/>
+              <line class="string-line" x1="30" y1="64" x2="135" y2="64"/>
+              <line class="string-line" x1="30" y1="86" x2="135" y2="86"/>
+              <line class="string-line" x1="30" y1="108" x2="135" y2="108"/>
+              <line class="string-line" x1="30" y1="130" x2="135" y2="130" opacity="0.4"/>
+
+              <line class="fret-line nut" x1="30" y1="10" x2="30" y2="140"/>
+              <line class="fret-line" x1="65" y1="10" x2="65" y2="140"/>
+              <line class="fret-line" x1="100" y1="10" x2="100" y2="140"/>
+              <line class="fret-line" x1="135" y1="10" x2="135" y2="140"/>
+
+              <text class="fret-label" x="47.5" y="152" text-anchor="middle">0</text>
+              <text class="fret-label" x="82.5" y="152" text-anchor="middle">+1</text>
+              <text class="fret-label" x="117.5" y="152" text-anchor="middle">+2</text>
+
+              <text class="string-label" x="14" y="20" text-anchor="middle" dy=".35em">e</text>
+              <text class="string-label" x="14" y="42" text-anchor="middle" dy=".35em">B</text>
+              <text class="string-label" x="14" y="64" text-anchor="middle" dy=".35em">G</text>
+              <text class="string-label" x="14" y="86" text-anchor="middle" dy=".35em">D</text>
+              <text class="string-label" x="14" y="108" text-anchor="middle" dy=".35em">A</text>
+              <text class="string-label" x="14" y="130" text-anchor="middle" dy=".35em" opacity="0.4">E</text>
+
+              <text class="note-mute-text" x="47.5" y="130" dy=".35em">×</text>
+              <circle class="note-circle" cx="47.5" cy="20" r="9"/>
+              <circle class="note-circle" cx="117.5" cy="42" r="9"/>
+              <circle class="note-circle" cx="117.5" cy="64" r="9"/>
+              <circle class="note-circle" cx="117.5" cy="86" r="9"/>
+              <circle class="note-circle root" cx="47.5" cy="108" r="9"/>
+              <text class="note-text root" x="47.5" y="108" dy=".35em" style="font-size:9.5px;">R</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <p class="panel-desc">Deux formes d'accords barrés, mobiles sur le manche : la <strong>forme Mi majeur</strong> (racine sur la 6ᵉ corde, doigté identique à un Mi majeur ouvert transposé) et la <strong>forme La majeur</strong> (racine sur la 5ᵉ corde, 6ᵉ corde étouffée). Le principe travaillé aujourd'hui : décaler toute la forme de <strong>5 cases</strong> (une quarte) vers l'aigu fait passer à l'accord suivant du <a href="theorie.html#cercle-des-quartes">cercle des quartes</a> — ex. en forme Mi : E → A → D → G... Fait d'abord avec la forme Mi majeur, puis avec la forme La majeur.</p>
+    </div>
+
+    <!-- Les prochaines fiches (nouvelles notions vues en cours) viendront s'ajouter ici,
+         en reprenant le même gabarit de .panel avec sa date. -->
+
+  </div>
+
+</body>
+</html>

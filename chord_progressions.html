@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chord Progressions — Explorer harmonique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/nav.css">
+<style>
+  :root {
+    --bg: #F1EBE0;
+    --bg-soft: #E8E1D3;
+    --surface: #FAF6EE;
+    --surface-hover: #F4EEDF;
+    --ink: #2A2622;
+    --ink-soft: #5C544B;
+    --muted: #8E867A;
+    --line: #D6CDB9;
+    --line-soft: #E4DCC9;
+    --accent: #6B7F5C;
+    --accent-soft: #C9D2BC;
+    --warm: #B08864;
+    --warm-soft: #E6D5C2;
+    --disabled: #C5BEAF;
+    --shadow: 0 1px 2px rgba(42, 38, 34, 0.04), 0 8px 24px rgba(42, 38, 34, 0.06);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  body {
+    padding: 4rem 2rem 6rem;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(176, 136, 100, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 90%, rgba(107, 127, 92, 0.04) 0%, transparent 50%);
+  }
+
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* — Header — */
+  header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--warm);
+  }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* — Key selector — */
+  .key-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .key-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 0.5rem;
+  }
+
+  .key-btn {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 2.4rem;
+  }
+
+  .key-btn:hover {
+    border-color: var(--warm);
+    color: var(--warm);
+  }
+
+  .key-btn.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+
+  /* — Board — */
+  .board {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 130px repeat(7, 1fr);
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .row:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .row-label {
+    text-align: right;
+    padding-right: 1rem;
+  }
+
+  .row-label .name {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .row-label .hint {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* — Chord cell — */
+  .chord {
+    background: var(--bg-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    padding: 1rem 0.5rem 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2, 0, 0.2, 1);
+    position: relative;
+    user-select: none;
+    min-height: 78px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .chord.empty {
+    background: transparent;
+    border: 1px dashed var(--line-soft);
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  .chord:not(.empty):hover {
+    border-color: var(--ink-soft);
+    transform: translateY(-1px);
+  }
+
+  .chord .roman {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .chord .name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.45rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .chord .name .suffix {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-left: 0.05em;
+    vertical-align: super;
+  }
+
+  /* — States — */
+  .chord.selected {
+    background: var(--ink);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(42, 38, 34, 0.15);
+  }
+  .chord.selected .roman { color: var(--warm-soft); }
+  .chord.selected .name { color: var(--bg); }
+  .chord.selected .name .suffix { color: var(--warm-soft); }
+
+  .chord.suggested {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+  .chord.suggested .roman { color: var(--accent); font-weight: 500; }
+
+  .chord.dimmed {
+    opacity: 0.32;
+  }
+
+  /* — Section dividers — */
+  .section-tag {
+    position: absolute;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .section-tag.top-right {
+    top: 1.25rem;
+    right: 1.5rem;
+  }
+  .section-tag.middle-right {
+    right: 1.5rem;
+  }
+  .section-tag.bottom-right {
+    bottom: 1.25rem;
+    right: 1.5rem;
+  }
+
+  /* — Info panel — */
+  .info {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .info-card {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: 18px;
+    padding: 1.75rem;
+    min-height: 140px;
+  }
+
+  .info-card h3 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .info-content {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .info-content .highlight {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-content .meta {
+    color: var(--warm);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+  }
+
+  /* — Progression display — */
+  .progression {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    min-height: 2.5rem;
+  }
+
+  .prog-chip {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    color: var(--ink);
+    padding: 0.3rem 0.7rem;
+    background: var(--bg-soft);
+    border-radius: 8px;
+    border: 1px solid var(--line-soft);
+  }
+
+  .prog-arrow {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .prog-empty {
+    color: var(--muted);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+
+  .clear-btn {
+    margin-top: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.4rem 0;
+    transition: color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .clear-btn:hover {
+    color: var(--warm);
+  }
+
+  /* — Legend — */
+  .legend {
+    margin-top: 3rem;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.92rem;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .legend strong {
+    color: var(--ink-soft);
+    font-weight: 500;
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* — Mobile — */
+  @media (max-width: 880px) {
+    body { padding: 2rem 1rem 4rem; }
+    .board { padding: 2rem 1rem; border-radius: 18px; }
+    .row {
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.4rem;
+      margin-bottom: 2.5rem;
+    }
+    .row-label {
+      grid-column: 1 / -1;
+      text-align: left;
+      padding-right: 0;
+      margin-bottom: 0.5rem;
+    }
+    .chord {
+      padding: 0.6rem 0.2rem 0.5rem;
+      min-height: 64px;
+      border-radius: 10px;
+    }
+    .chord .name { font-size: 1rem; }
+    .chord .roman { font-size: 0.62rem; }
+    .info { grid-template-columns: 1fr; gap: 1rem; }
+    .section-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="site-nav-root" data-page="accords"></div>
+<script src="js/nav.js"></script>
+
+<div class="container">
+
+  <header>
+    <div class="eyebrow">Chord Progressions</div>
+    <h1>Composer une <em>progression</em><br>en toute liberté</h1>
+    <p class="subtitle">Inspiré de la carte <em>chord_files Progressions II</em> — sélectionnez un accord, suivez les chemins suggérés.</p>
+  </header>
+
+  <div class="key-selector" id="keySelector">
+    <span class="key-label">Tonalité</span>
+  </div>
+
+  <div class="board">
+    <span class="section-tag top-right">Secondary Dominants</span>
+
+    <div class="row" id="row-dominants">
+      <div class="row-label">
+        <span class="name">Dominantes</span>
+        <span class="hint">secondaires</span>
+      </div>
+    </div>
+
+    <span class="section-tag middle-right">Main Chords</span>
+
+    <div class="row" id="row-main">
+      <div class="row-label">
+        <span class="name">Accords</span>
+        <span class="hint">diatoniques</span>
+      </div>
+    </div>
+
+    <span class="section-tag bottom-right">Modal Interchange</span>
+
+    <div class="row" id="row-modal">
+      <div class="row-label">
+        <span class="name">Emprunts</span>
+        <span class="hint">modaux</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info">
+    <div class="info-card">
+      <h3>Accord sélectionné</h3>
+      <div class="info-content" id="selectedInfo">
+        <span class="prog-empty">Cliquez sur un accord pour commencer.</span>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Votre progression</h3>
+      <div class="progression" id="progression">
+        <span class="prog-empty">—</span>
+      </div>
+      <button class="clear-btn" id="clearBtn" style="display:none">↺ Recommencer</button>
+    </div>
+  </div>
+
+  <div class="legend">
+    <strong>Lecture de la carte</strong>
+    Depuis un <em>accord diatonique</em> : libre vers les autres diatoniques, montée vers une dominante secondaire, et — depuis I, IV ou V — descente vers un emprunt modal.
+    Depuis une <em>dominante secondaire</em> : résolution forcée vers son accord cible.
+    Depuis un <em>emprunt modal</em> : remontée vers les accords diatoniques.
+  </div>
+
+</div>
+
+<script>
+/* —————————————————————————————————————————
+   Données harmoniques
+————————————————————————————————————————— */
+
+// Notes chromatiques avec préférence pour les bémols (cohérent avec la carte)
+const NOTES_SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+const NOTES_FLAT  = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+
+// Toutes les tonalités majeures
+const KEYS = ['C', 'G', 'D', 'A', 'E', 'B', 'F#', 'Db', 'Ab', 'Eb', 'Bb', 'F'];
+
+// Pour chaque tonalité, on choisit l'orthographe la plus naturelle
+const KEY_PREFER_FLATS = {
+  'C': false, 'G': false, 'D': false, 'A': false, 'E': false, 'B': false,
+  'F#': false, 'Db': true, 'Ab': true, 'Eb': true, 'Bb': true, 'F': true
+};
+
+function noteAt(rootName, semitones) {
+  const useFlats = KEY_PREFER_FLATS[rootName] ?? false;
+  const scale = useFlats ? NOTES_FLAT : NOTES_SHARP;
+  // Trouver l'index du root dans n'importe quelle des deux échelles
+  let rootIdx = NOTES_SHARP.indexOf(rootName);
+  if (rootIdx === -1) rootIdx = NOTES_FLAT.indexOf(rootName);
+  return scale[(rootIdx + semitones + 120) % 12];
+}
+
+// Définition de la structure : intervalles depuis la tonique
+// Main chords (degrés diatoniques)
+const MAIN = [
+  { id: 'I',   semi: 0,  roman: 'I',   suffix: 'Maj7',  type: 'maj7' },
+  { id: 'vi',  semi: 9,  roman: 'vi',  suffix: 'm7',    type: 'm7' },
+  { id: 'IV',  semi: 5,  roman: 'IV',  suffix: 'Maj7',  type: 'maj7' },
+  { id: 'ii',  semi: 2,  roman: 'ii',  suffix: 'm7',    type: 'm7' },
+  { id: 'V',   semi: 7,  roman: 'V',   suffix: '7',     type: '7' },
+  { id: 'iii', semi: 4,  roman: 'iii', suffix: 'm7',    type: 'm7' },
+  { id: 'vii', semi: 11, roman: 'vii', suffix: 'm7♭5',  type: 'm7b5' }
+];
+
+// Dominantes secondaires (chacune résout vers le main chord de même position)
+// V/I = G7 en Do (semi +7 par rapport à C, mais +7 par rapport à I = +7)
+// La dominante secondaire de X est située une quinte au-dessus de X, donc semi + 7
+const DOMINANTS = [
+  { id: 'V/I',   target: 'I',   semi: 7,            suffix: '7' },
+  { id: 'V/vi',  target: 'vi',  semi: (9 + 7) % 12, suffix: '7' },  // E en C
+  { id: 'V/IV',  target: 'IV',  semi: (5 + 7) % 12, suffix: '7' },  // C en C
+  { id: 'V/ii',  target: 'ii',  semi: (2 + 7) % 12, suffix: '7' },  // A en C
+  { id: 'V/V',   target: 'V',   semi: (7 + 7) % 12, suffix: '7' },  // D en C
+  { id: 'V/iii', target: 'iii', semi: (4 + 7) % 12, suffix: '7' },  // B en C
+  null  // pas de dominante secondaire pour vii dans la carte
+];
+
+// Modal interchange (emprunts au mineur parallèle)
+const MODAL = [
+  { id: 'bIII',  semi: 3,  roman: '♭III', suffix: 'Maj7' },
+  null,
+  { id: 'bVI',   semi: 8,  roman: '♭VI',  suffix: 'Maj7' },
+  { id: 'iv',    semi: 5,  roman: 'iv',   suffix: 'm7' },
+  { id: 'bVII',  semi: 10, roman: '♭VII', suffix: '7' },
+  null,
+  { id: 'ii_dim', semi: 2, roman: 'ii°',  suffix: 'm7♭5' }
+];
+
+/* —————————————————————————————————————————
+   Règles de transition
+————————————————————————————————————————— */
+
+function getNextOptions(chord) {
+  // chord = { row: 'main'|'dominant'|'modal', id: ... }
+  const options = [];
+
+  if (chord.row === 'main') {
+    // Libre vers les autres main chords
+    MAIN.forEach(m => { if (m.id !== chord.id) options.push({ row: 'main', id: m.id }); });
+    // Vers toutes les dominantes secondaires
+    DOMINANTS.forEach(d => { if (d) options.push({ row: 'dominant', id: d.id }); });
+    // Vers modal interchange UNIQUEMENT si I, IV ou V
+    if (['I', 'IV', 'V'].includes(chord.id)) {
+      MODAL.forEach(m => { if (m) options.push({ row: 'modal', id: m.id }); });
+    }
+  }
+  else if (chord.row === 'dominant') {
+    // Résolution forcée vers le main chord cible
+    const dom = DOMINANTS.find(d => d && d.id === chord.id);
+    if (dom) options.push({ row: 'main', id: dom.target });
+  }
+  else if (chord.row === 'modal') {
+    // Remontée vers les main chords (tous autorisés)
+    MAIN.forEach(m => options.push({ row: 'main', id: m.id }));
+  }
+
+  return options;
+}
+
+/* —————————————————————————————————————————
+   Rendu
+————————————————————————————————————————— */
+
+let currentKey = 'C';
+let selected = null;
+let progression = [];
+
+function chordName(rootName, definition) {
+  if (!definition) return null;
+  const root = noteAt(rootName, definition.semi);
+  return { root, suffix: definition.suffix };
+}
+
+function renderBoard() {
+  const rowDom = document.getElementById('row-dominants');
+  const rowMain = document.getElementById('row-main');
+  const rowMod = document.getElementById('row-modal');
+
+  // Conserver les labels
+  rowDom.innerHTML = rowDom.children[0].outerHTML;
+  rowMain.innerHTML = rowMain.children[0].outerHTML;
+  rowMod.innerHTML = rowMod.children[0].outerHTML;
+
+  // Dominantes secondaires
+  DOMINANTS.forEach((d, i) => {
+    const el = document.createElement('div');
+    if (!d) {
+      el.className = 'chord empty';
+    } else {
+      const c = chordName(currentKey, d);
+      el.className = 'chord';
+      el.dataset.row = 'dominant';
+      el.dataset.id = d.id;
+      el.innerHTML = `
+        <span class="roman">${d.id}</span>
+        <span class="name">${formatRoot(c.root)}<span class="suffix">${c.suffix}</span></span>
+      `;
+      el.addEventListener('click', () => selectChord({ row: 'dominant', id: d.id }));
+    }
+    rowDom.appendChild(el);
+  });
+
+  // Main chords
+  MAIN.forEach(m => {
+    const c = chordName(currentKey, m);
+    const el = document.createElement('div');
+    el.className = 'chord';
+    el.dataset.row = 'main';
+    el.dataset.id = m.id;
+    el.innerHTML = `
+      <span class="roman">${m.roman}</span>
+      <span class="name">${formatRoot(c.root)}<span class="suffix">${m.suffix}</span></span>
+    `;
+    el.addEventListener('click', () => selectChord({ row: 'main', id: m.id }));
+    rowMain.appendChild(el);
+  });
+
+  // Modal interchange
+  MODAL.forEach(m => {
+    const el = document.createElement('div');
+    if (!m) {
+      el.className = 'chord empty';
+    } else {
+      const c = chordName(currentKey, m);
+      el.className = 'chord';
+      el.dataset.row = 'modal';
+      el.dataset.id = m.id;
+      el.innerHTML = `
+        <span class="roman">${m.roman}</span>
+        <span class="name">${formatRoot(c.root)}<span class="suffix">${m.suffix}</span></span>
+      `;
+      el.addEventListener('click', () => selectChord({ row: 'modal', id: m.id }));
+    }
+    rowMod.appendChild(el);
+  });
+
+  updateStates();
+}
+
+function formatRoot(noteName) {
+  // Affichage : remplacer 'b' par '♭' et '#' par '♯'
+  return noteName.replace('b', '♭').replace('#', '♯');
+}
+
+function getChordEl(chord) {
+  return document.querySelector(`.chord[data-row="${chord.row}"][data-id="${chord.id}"]`);
+}
+
+function chordLabel(chord) {
+  let def;
+  if (chord.row === 'main') def = MAIN.find(m => m.id === chord.id);
+  else if (chord.row === 'dominant') def = DOMINANTS.find(d => d && d.id === chord.id);
+  else if (chord.row === 'modal') def = MODAL.find(m => m && m.id === chord.id);
+  if (!def) return '';
+  const c = chordName(currentKey, def);
+  return formatRoot(c.root) + c.suffix;
+}
+
+function chordFunction(chord) {
+  if (chord.row === 'main') {
+    const m = MAIN.find(x => x.id === chord.id);
+    return `Degré ${m.roman} — accord diatonique`;
+  }
+  if (chord.row === 'dominant') {
+    const d = DOMINANTS.find(x => x && x.id === chord.id);
+    const target = MAIN.find(m => m.id === d.target);
+    const targetC = chordName(currentKey, target);
+    return `Dominante secondaire ${d.id} — résout vers ${formatRoot(targetC.root)}${target.suffix}`;
+  }
+  if (chord.row === 'modal') {
+    const m = MODAL.find(x => x && x.id === chord.id);
+    return `Emprunt modal ${m.roman} — couleur empruntée au mineur`;
+  }
+}
+
+function updateStates() {
+  document.querySelectorAll('.chord').forEach(el => {
+    el.classList.remove('selected', 'suggested', 'dimmed');
+  });
+
+  if (!selected) return;
+
+  const selEl = getChordEl(selected);
+  if (selEl) selEl.classList.add('selected');
+
+  const suggestions = getNextOptions(selected);
+  const suggestionKeys = new Set(suggestions.map(s => `${s.row}:${s.id}`));
+
+  document.querySelectorAll('.chord').forEach(el => {
+    if (el.classList.contains('empty') || el.classList.contains('selected')) return;
+    const key = `${el.dataset.row}:${el.dataset.id}`;
+    if (suggestionKeys.has(key)) {
+      el.classList.add('suggested');
+    } else {
+      el.classList.add('dimmed');
+    }
+  });
+}
+
+function selectChord(chord) {
+  // Si on clique sur un accord déjà sélectionné, on désélectionne
+  if (selected && selected.row === chord.row && selected.id === chord.id) {
+    selected = null;
+    updateStates();
+    renderInfo();
+    return;
+  }
+
+  // Ajouter à la progression si transition autorisée OU premier accord
+  if (!selected) {
+    progression = [chord];
+  } else {
+    const allowed = getNextOptions(selected).some(o => o.row === chord.row && o.id === chord.id);
+    if (allowed) {
+      progression.push(chord);
+    } else {
+      // Transition non autorisée : on redémarre une nouvelle progression
+      progression = [chord];
+    }
+  }
+
+  selected = chord;
+  updateStates();
+  renderInfo();
+}
+
+function renderInfo() {
+  const info = document.getElementById('selectedInfo');
+  const prog = document.getElementById('progression');
+  const clearBtn = document.getElementById('clearBtn');
+
+  if (!selected) {
+    info.innerHTML = '<span class="prog-empty">Cliquez sur un accord pour commencer.</span>';
+    prog.innerHTML = '<span class="prog-empty">—</span>';
+    clearBtn.style.display = 'none';
+    return;
+  }
+
+  info.innerHTML = `
+    <span class="highlight">${chordLabel(selected)}</span>
+    <span class="meta">${chordFunction(selected)}</span>
+  `;
+
+  if (progression.length === 0) {
+    prog.innerHTML = '<span class="prog-empty">—</span>';
+    clearBtn.style.display = 'none';
+  } else {
+    const chips = progression.map(c => `<span class="prog-chip">${chordLabel(c)}</span>`);
+    prog.innerHTML = chips.join('<span class="prog-arrow">→</span>');
+    clearBtn.style.display = progression.length > 0 ? 'inline-block' : 'none';
+  }
+}
+
+/* —————————————————————————————————————————
+   Sélecteur de tonalité
+————————————————————————————————————————— */
+
+function renderKeySelector() {
+  const sel = document.getElementById('keySelector');
+  KEYS.forEach(k => {
+    const btn = document.createElement('button');
+    btn.className = 'key-btn' + (k === currentKey ? ' active' : '');
+    btn.textContent = formatRoot(k);
+    btn.addEventListener('click', () => {
+      currentKey = k;
+      selected = null;
+      progression = [];
+      document.querySelectorAll('.key-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderBoard();
+      renderInfo();
+    });
+    sel.appendChild(btn);
+  });
+}
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  selected = null;
+  progression = [];
+  updateStates();
+  renderInfo();
+});
+
+/* — Init — */
+renderKeySelector();
+renderBoard();
+renderInfo();
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon carnet de guitare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-soft);
+      border-radius: 4px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card:hover {
+      background: var(--bg-accent);
+      border-color: var(--line);
+    }
+
+    .card-label {
+      font-family: 'Manrope', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .card-title {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 19px;
+      color: var(--root);
+    }
+
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 540px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav-root" data-page="accueil"></div>
+  <script src="js/nav.js"></script>
+
+  <div class="container">
+
+    <header class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">Guitare</p>
+        <h1>Mon <em>carnet</em> de guitare</h1>
+        <p class="subtitle">Cours avec Claire — exercices, gammes, théorie et suivi de progression.</p>
+      </div>
+    </header>
+
+    <div class="cards">
+      <a class="card" href="echauffements.html">
+        <span class="card-label">Routine</span>
+        <span class="card-title">Échauffements</span>
+        <span class="card-desc">Hammer-on, pull-off, la torture, le crabe — la routine avant de jouer.</span>
+      </a>
+
+      <a class="card" href="theorie.html">
+        <span class="card-label">Notions</span>
+        <span class="card-title">Théorie</span>
+        <span class="card-desc">Cercle des quartes et autres notions données en cours, datées.</span>
+      </a>
+
+      <a class="card" href="journal.html">
+        <span class="card-label">Suivi</span>
+        <span class="card-title">Journal</span>
+        <span class="card-desc">Ce qu'on a vu cours après cours, et où le retrouver.</span>
+      </a>
+
+      <a class="card" href="gammes.html">
+        <span class="card-label">Répertoire</span>
+        <span class="card-title">Gammes</span>
+        <span class="card-desc">Pentatonique mineure, Do majeur, et les prochaines à venir.</span>
+      </a>
+
+      <a class="card" href="chord_progressions.html">
+        <span class="card-label">Harmonie</span>
+        <span class="card-title">Accords</span>
+        <span class="card-desc">Explorateur de progressions d'accords par tonalité.</span>
+      </a>
+
+      <a class="card" href="partitions.html">
+        <span class="card-label">Morceaux</span>
+        <span class="card-title">Partitions</span>
+        <span class="card-desc">Les PDF de morceaux et fiches à jouer.</span>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

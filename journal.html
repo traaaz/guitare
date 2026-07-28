@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal — Guitare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <style>
+    .journal-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .journal-list li {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.55;
+      padding-left: 14px;
+      position: relative;
+    }
+    .journal-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+    .journal-list a {
+      color: var(--root);
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 400;
+      text-decoration: none;
+    }
+    .journal-list a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <div id="site-nav-root" data-page="journal"></div>
+  <script src="js/nav.js"></script>
+
+  <div class="container">
+
+    <header class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">Guitare</p>
+        <h1>Journal de bord</h1>
+        <p class="subtitle">Ce qu'on a vu cours après cours avec Claire, et où le retrouver sur le site.</p>
+      </div>
+    </header>
+
+    <!-- Mardi 28 juillet 2026 -->
+    <div class="panel" id="j-2026-07-28">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Cours</span>
+          <span class="panel-roman">Mardi 28 juillet 2026</span>
+        </div>
+      </div>
+      <ul class="journal-list">
+        <li><a href="theorie.html#progressions-de-quarte">Progressions de quarte</a> — nouvelle fiche : enchaîner les tonalités par quarte avec des formes d'accords barrés mobiles, d'abord en forme Mi majeur puis en forme La majeur.</li>
+        <li><a href="partitions.html#little-black-submarines">Little Black Submarines</a> — intro, couplet et refrain enchaînés, tempo lent puis accéléré, transition La → Do travaillée avec une basse de passage en Si.</li>
+      </ul>
+    </div>
+
+    <!-- Jeudi 16 juillet 2026 -->
+    <div class="panel" id="j-2026-07-16">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Cours</span>
+          <span class="panel-roman">Jeudi 16 juillet 2026</span>
+        </div>
+      </div>
+      <ul class="journal-list">
+        <li><a href="theorie.html#cercle-des-quartes">Cercle des quartes</a> — nouvelle fiche de théorie.</li>
+        <li><a href="theorie.html#notes-manche">Trouver les notes sur le manche</a> — méthode vue sur la corde de Mi grave (6ᵉ corde).</li>
+        <li><a href="theorie.html#transposition">Transposer 6ᵉ → 4ᵉ corde</a> — début du principe de transposition d'une corde à l'autre.</li>
+        <li><a href="partitions.html#blues-mi">Blues en Mi</a> — travail du morceau (grille 12 mesures) avec un nouveau lick de fin.</li>
+      </ul>
+    </div>
+
+    <!-- Vers le 2 juillet 2026 (date approximative, noté rétroactivement) -->
+    <div class="panel" id="j-2026-07-02">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span class="panel-label">Cours</span>
+          <span class="panel-roman">Vers le 2 juillet 2026</span>
+        </div>
+        <div class="panel-meta">Date approximative — noté rétroactivement</div>
+      </div>
+      <ul class="journal-list">
+        <li><a href="pentatonique-mineure.html#licks">Licks — question / réponse</a> — 4 licks à travailler sur la gamme pentatonique (grave/aigu, positions I et II), chacun terminé par un accord plaqué de Sol ou Mi majeur.</li>
+      </ul>
+    </div>
+
+    <!-- Les prochains cours viendront s'ajouter ici, un .panel par date (ordre du plus récent au plus ancien). -->
+
+  </div>
+
+</body>
+</html>
