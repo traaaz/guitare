@@ -70,6 +70,49 @@
       border-radius: 2px;
       margin-right: 6px;
     }
+
+    /* Animation du geste (hammer-on) */
+    .finger-group { transform-box: fill-box; transform-origin: center; }
+    .finger-group.held .finger-note {
+      fill: var(--note);
+      stroke: var(--root);
+      stroke-width: 1.4;
+    }
+    .finger-group.held .finger-text { fill: #fbf6ec; }
+    .finger-group.released .finger-note {
+      fill: none;
+      stroke: var(--text-muted);
+      stroke-width: 1;
+      stroke-dasharray: 3,2;
+    }
+    .finger-group.released .finger-text { fill: var(--text-muted); }
+    .finger-group.hit .finger-note {
+      fill: var(--root);
+      stroke: var(--root);
+      animation: fingerHit 0.36s ease;
+    }
+    .finger-group.hit .finger-text { fill: #fbf6ec; }
+    @keyframes fingerHit {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+    /* Pull-off : le doigt se retire vers le haut plutôt que de "taper" vers le bas */
+    #pull-off .finger-group.hit .finger-note,
+    #pull-off .finger-group.hit .finger-text {
+      animation: fingerPull 0.4s ease;
+    }
+    @keyframes fingerPull {
+      0% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    .move-arc.pulse { animation: arcPulse 0.42s ease; }
+    @keyframes arcPulse {
+      0% { stroke-width: 1.4; }
+      45% { stroke-width: 3; }
+      100% { stroke-width: 1.4; }
+    }
   </style>
 </head>
 <body>
@@ -128,21 +171,30 @@
           <text class="fret-label" x="215" y="88" text-anchor="middle">3</text>
           <text class="fret-label" x="285" y="88" text-anchor="middle">4</text>
 
-          <path class="move-arc" d="M 75 50 Q 110 18 145 50"/>
+          <path class="move-arc" id="arc-1" d="M 75 50 Q 110 18 145 50"/>
           <text class="move-label" x="110" y="14">×2</text>
-          <path class="move-arc" d="M 145 50 Q 180 18 215 50"/>
+          <path class="move-arc" id="arc-2" d="M 145 50 Q 180 18 215 50"/>
           <text class="move-label" x="180" y="14">×2</text>
-          <path class="move-arc" d="M 215 50 Q 250 18 285 50"/>
+          <path class="move-arc" id="arc-3" d="M 215 50 Q 250 18 285 50"/>
           <text class="move-label" x="250" y="14">×4</text>
 
-          <circle class="finger-note" cx="75" cy="50" r="12"/>
-          <text class="finger-text" x="75" y="50" dy=".35em">1</text>
-          <circle class="finger-note" cx="145" cy="50" r="12"/>
-          <text class="finger-text" x="145" y="50" dy=".35em">2</text>
-          <circle class="finger-note" cx="215" cy="50" r="12"/>
-          <text class="finger-text" x="215" y="50" dy=".35em">3</text>
-          <circle class="finger-note" cx="285" cy="50" r="12"/>
-          <text class="finger-text" x="285" y="50" dy=".35em">4</text>
+          <g class="finger-group" id="note-1">
+            <circle class="finger-note" cx="75" cy="50" r="12"/>
+            <text class="finger-text" x="75" y="50" dy=".35em">1</text>
+          </g>
+          <g class="finger-group" id="note-2">
+            <circle class="finger-note" cx="145" cy="50" r="12"/>
+            <text class="finger-text" x="145" y="50" dy=".35em">2</text>
+          </g>
+          <g class="finger-group" id="note-3">
+            <circle class="finger-note" cx="215" cy="50" r="12"/>
+            <text class="finger-text" x="215" y="50" dy=".35em">3</text>
+          </g>
+          <g class="finger-group" id="note-4">
+            <circle class="finger-note" cx="285" cy="50" r="12"/>
+            <text class="finger-text" x="285" y="50" dy=".35em">4</text>
+          </g>
+
         </svg>
       </div>
       <p class="panel-desc">Index posé en case 1 (corde 1, le <em>e</em> aigu). Joue la corde puis <strong>hammer 2 fois</strong> en case 2 avec le majeur, index toujours posé. Sans relâcher index et majeur, <strong>hammer 2 fois</strong> en case 3 avec l'annulaire. Sans relâcher les trois premiers doigts, <strong>hammer 4 fois</strong> en case 4 avec l'auriculaire. Décale ensuite l'index d'une case (case 2) et recommence le même schéma 2-2-4, jusqu'en bas du manche. Un coup de doigt par clic de métronome.</p>
@@ -172,21 +224,26 @@
           <text class="fret-label" x="215" y="88" text-anchor="middle">3</text>
           <text class="fret-label" x="285" y="88" text-anchor="middle">4</text>
 
-          <path class="move-arc" d="M 285 50 Q 250 18 215 50"/>
           <text class="move-label" x="250" y="14">×2</text>
-          <path class="move-arc" d="M 215 50 Q 180 18 145 50"/>
           <text class="move-label" x="180" y="14">×2</text>
-          <path class="move-arc" d="M 145 50 Q 110 18 75 50"/>
           <text class="move-label" x="110" y="14">×4</text>
 
-          <circle class="finger-note" cx="75" cy="50" r="12"/>
-          <text class="finger-text" x="75" y="50" dy=".35em">1</text>
-          <circle class="finger-note" cx="145" cy="50" r="12"/>
-          <text class="finger-text" x="145" y="50" dy=".35em">2</text>
-          <circle class="finger-note" cx="215" cy="50" r="12"/>
-          <text class="finger-text" x="215" y="50" dy=".35em">3</text>
-          <circle class="finger-note" cx="285" cy="50" r="12"/>
-          <text class="finger-text" x="285" y="50" dy=".35em">4</text>
+          <g class="finger-group" id="po-note-1">
+            <circle class="finger-note" cx="75" cy="50" r="12"/>
+            <text class="finger-text" x="75" y="50" dy=".35em">1</text>
+          </g>
+          <g class="finger-group" id="po-note-2">
+            <circle class="finger-note" cx="145" cy="50" r="12"/>
+            <text class="finger-text" x="145" y="50" dy=".35em">2</text>
+          </g>
+          <g class="finger-group" id="po-note-3">
+            <circle class="finger-note" cx="215" cy="50" r="12"/>
+            <text class="finger-text" x="215" y="50" dy=".35em">3</text>
+          </g>
+          <g class="finger-group" id="po-note-4">
+            <circle class="finger-note" cx="285" cy="50" r="12"/>
+            <text class="finger-text" x="285" y="50" dy=".35em">4</text>
+          </g>
         </svg>
       </div>
       <p class="panel-desc">Même exercice à l'inverse, pour remonter le manche une fois arrivé en bas avec le hammer-on. Les 4 doigts posés sur 4 cases consécutives : <strong>pull-off 2 fois</strong> de l'auriculaire (case 4) vers l'annulaire (case 3), <strong>2 fois</strong> de l'annulaire vers le majeur (case 2), <strong>4 fois</strong> du majeur vers l'index (case 1) — les doigts restants toujours posés. Décale ensuite la main d'une case vers le haut du manche et recommence, jusqu'à revenir en case 1. Toujours au métronome.</p>
@@ -338,6 +395,97 @@
     </div>
 
   </div>
+
+  <script>
+    function initLegatoAnim(panelId, prefix, sequence) {
+      var panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      var running = false;
+      var timerId = null;
+
+      function applyStep(step) {
+        [1, 2, 3, 4].forEach(function (n) {
+          var g = document.getElementById(prefix + 'note-' + n);
+          if (!g) return;
+          g.classList.remove('held', 'hit', 'released');
+          if (step.hold.indexOf(n) !== -1) g.classList.add('held');
+          if (step.released && step.released.indexOf(n) !== -1) g.classList.add('released');
+          if (step.flash === n) {
+            void g.getBoundingClientRect(); // relance l'animation même si déjà "hit" juste avant (offsetWidth ne force pas de reflow sur du SVG)
+            g.classList.add('hit');
+          }
+        });
+        [1, 2, 3].forEach(function (a) {
+          var arc = document.getElementById(prefix + 'arc-' + a);
+          if (!arc) return;
+          arc.classList.remove('pulse');
+        });
+        if (step.arc) {
+          var activeArc = document.getElementById(prefix + 'arc-' + step.arc);
+          if (activeArc) {
+            void activeArc.getBoundingClientRect(); // relance l'animation à chaque frappe (offsetWidth ne force pas de reflow sur du SVG)
+            activeArc.classList.add('pulse');
+          }
+        }
+      }
+
+      var resetStep = { hold: [], flash: null, arc: null };
+
+      function playStep(i) {
+        if (!running) return;
+        var step = sequence[i];
+        applyStep(step);
+        timerId = setTimeout(function () {
+          playStep((i + 1) % sequence.length);
+        }, step.dur);
+      }
+
+      function start() {
+        if (running) return;
+        running = true;
+        playStep(0);
+      }
+
+      function stop() {
+        if (!running) return;
+        running = false;
+        clearTimeout(timerId);
+        applyStep(resetStep);
+      }
+
+      panel.addEventListener('mouseenter', start);
+      panel.addEventListener('mouseleave', stop);
+    }
+
+    initLegatoAnim('hammer-on', '', [
+      { flash: null, hold: [1],           arc: null, dur: 600 }, // index posé, corde jouée
+      { flash: 2,    hold: [1],           arc: 1,    dur: 520 }, // hammer 1 (majeur)
+      { flash: 2,    hold: [1, 2],        arc: 1,    dur: 520 }, // hammer 2 (majeur)
+      { flash: 3,    hold: [1, 2],        arc: 2,    dur: 520 }, // hammer 1 (annulaire)
+      { flash: 3,    hold: [1, 2, 3],     arc: 2,    dur: 520 }, // hammer 2 (annulaire)
+      { flash: 4,    hold: [1, 2, 3],     arc: 3,    dur: 460 }, // hammer 1 (auriculaire)
+      { flash: 4,    hold: [1, 2, 3, 4],  arc: 3,    dur: 460 }, // hammer 2
+      { flash: 4,    hold: [1, 2, 3, 4],  arc: 3,    dur: 460 }, // hammer 3
+      { flash: 4,    hold: [1, 2, 3, 4],  arc: 3,    dur: 460 }, // hammer 4
+      { flash: null, hold: [1, 2, 3, 4],  arc: null, dur: 800 }, // tenu (avant de décaler d'une case)
+      { flash: null, hold: [],            arc: null, dur: 500 }  // relâché avant de reboucler
+    ]);
+
+    initLegatoAnim('pull-off', 'po-', [
+      { flash: null, hold: [1, 2, 3, 4],  released: [],        dur: 800 }, // position de départ, 4 doigts posés
+      { flash: 4,    hold: [1, 2, 3, 4],  released: [],        dur: 520 }, // pull-off 1 (auriculaire, encore posé)
+      { flash: 4,    hold: [1, 2, 3],     released: [4],       dur: 520 }, // pull-off 2 : auriculaire relâché
+      { flash: 3,    hold: [1, 2, 3],     released: [4],       dur: 520 }, // pull-off 1 (annulaire, encore posé)
+      { flash: 3,    hold: [1, 2],        released: [4, 3],    dur: 520 }, // pull-off 2 : annulaire relâché
+      { flash: 2,    hold: [1, 2],        released: [4, 3],    dur: 460 }, // pull-off 1 (majeur, encore posé)
+      { flash: 2,    hold: [1, 2],        released: [4, 3],    dur: 460 }, // pull-off 2
+      { flash: 2,    hold: [1, 2],        released: [4, 3],    dur: 460 }, // pull-off 3
+      { flash: 2,    hold: [1],           released: [4, 3, 2], dur: 460 }, // pull-off 4 : majeur relâché
+      { flash: null, hold: [1],           released: [4, 3, 2], dur: 800 }, // tenu, index seul (avant de décaler d'une case)
+      { flash: null, hold: [],            released: [],        dur: 500 }  // remise à zéro avant de reboucler
+    ]);
+  </script>
 
 </body>
 </html>
